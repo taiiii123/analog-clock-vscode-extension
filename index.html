@@ -233,7 +233,6 @@
     </style>
 </head>
 <body>
-    <p class="hidden-text">📢 The clock is hidden due to the small screen size.</p>
     <div class="clock-wrapper">
         <div class="clock">
             <div class="hour-marks" id="hour-marks"></div>
@@ -335,10 +334,13 @@
 
             // デジタル時間表示
             const digitalTime = document.getElementById('digital-time');
-            const hoursDisplay = now.getHours().toString().padStart(2, '0');
+            const hours24 = now.getHours();
+            const ampm = hours24 >= 12 ? '午後' : '午前';
+            const hours12 = hours24 % 12 || 12; // 12時間形式（0時は12として表示）
+            const hours12Display = hours12.toString().padStart(2, '0'); // 2桁で表示
             const minutesDisplay = minutes.toString().padStart(2, '0');
             const secondsDisplay = seconds.toString().padStart(2, '0');
-            digitalTime.textContent = `${hoursDisplay}:${minutesDisplay}:${secondsDisplay}`;
+            digitalTime.textContent = `${ampm} ${hours12Display}:${minutesDisplay}:${secondsDisplay}`;
 
             // 針の角度計算
             const hourDegrees = (hours * 30) + (minutes * 0.5);

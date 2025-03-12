@@ -37,8 +37,11 @@ exports.getLargeClockHtml = getLargeClockHtml;
 const vscode_1 = __importStar(require("vscode"));
 /* ---------------------------------- large clock html ------------------------------------------------- */
 function getLargeClockHtml() {
-    const config = vscode_1.default.workspace.getConfiguration("analogClock");
-    const enableEmboss = config.get("enableEmboss", true);
+    const config = vscode_1.default.workspace.getConfiguration('analogClock');
+    const backgroundColor = config.get('backgroundColor', '#3498db');
+    const enableEmboss = config.get('enableEmboss', true);
+    const showDate = config.get('showDate', true);
+    const showTime = config.get('showTime', true);
     console.log("getLargeClockHtml()");
     return `<!DOCTYPE html>
     <html lang="ja">
@@ -58,7 +61,7 @@ function getLargeClockHtml() {
                 justify-content: center;
                 align-items: center;
                 min-height: 100vh;
-                background: linear-gradient(45deg, #2c3e50, #3498db);
+                background: linear-gradient(45deg, #2c3e50, ${backgroundColor});
                 font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
             }
 
@@ -295,8 +298,8 @@ function getLargeClockHtml() {
                 <p class="hidden-text">${vscode_1.l10n.t("📢 The clock is hidden due to the small screen size.")}</p>
                 <div class="hour-marks" id="hour-marks"></div>
                 <div class="hour-numbers" id="hour-numbers"></div>
-                <div class="date-display" id="date-display"></div>
-                <div class="digital-time" id="digital-time"></div>
+                <div id="date-display"></div>
+                <div id="digital-time"></div>
                 <div class="hand hour-hand" id="hour-hand"></div>
                 <div class="hand minute-hand" id="minute-hand"></div>
                 <div class="hand second-hand" id="second-hand"></div>
@@ -306,8 +309,7 @@ function getLargeClockHtml() {
 
         <script>
             // エンボス効果の有無
-            const isEmbossed = ${enableEmboss};
-            if (isEmbossed) {
+            if (${enableEmboss}) {
                 document.querySelector('.clock-wrapper').className += ' embossed';
             }
 
@@ -387,21 +389,27 @@ function getLargeClockHtml() {
                 const seconds = now.getSeconds();
                 const milliseconds = now.getMilliseconds();
 
-                // 日付表示
-                const dateDisplay = document.getElementById('date-display');
-                const year = now.getFullYear();
-                const month = (now.getMonth() + 1).toString().padStart(2, '0');
-                const day = now.getDate().toString().padStart(2, '0');
-                const daysOfWeek = ${vscode_1.l10n.t("['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']")};
-                const dayOfWeek = daysOfWeek[now.getDay()];
-                dateDisplay.textContent = \`\${year}/\${month}/\${day} (\${dayOfWeek}\)\`;
+                if (${showDate}) {
+                    // 日付表示
+                    const dateDisplay = document.getElementById('date-display');
+                    dateDisplay.classList.add("date-display");
+                    const year = now.getFullYear();
+                    const month = (now.getMonth() + 1).toString().padStart(2, '0');
+                    const day = now.getDate().toString().padStart(2, '0');
+                    const daysOfWeek = ${vscode_1.l10n.t("['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']")};
+                    const dayOfWeek = daysOfWeek[now.getDay()];
+                    dateDisplay.textContent = \`\${year}/\${month}/\${day} (\${dayOfWeek}\)\`;
+                }
 
-                // デジタル時間表示
-                const digitalTime = document.getElementById('digital-time');
-                const hoursDisplay = now.getHours().toString().padStart(2, '0');
-                const minutesDisplay = minutes.toString().padStart(2, '0');
-                const secondsDisplay = seconds.toString().padStart(2, '0');
-                digitalTime.textContent = \`\${hoursDisplay}:\${minutesDisplay}:\${secondsDisplay}\`;
+                if (${showTime}) {
+                    // デジタル時間表示
+                    const digitalTime = document.getElementById('digital-time');
+                    digitalTime.classList.add("digital-time");
+                    const hoursDisplay = now.getHours().toString().padStart(2, '0');
+                    const minutesDisplay = minutes.toString().padStart(2, '0');
+                    const secondsDisplay = seconds.toString().padStart(2, '0');
+                    digitalTime.textContent = \`\${hoursDisplay}:\${minutesDisplay}:\${secondsDisplay}\`;
+                }
 
                 // 針の角度計算
                 const hourDegrees = (hours * 30) + (minutes * 0.5);

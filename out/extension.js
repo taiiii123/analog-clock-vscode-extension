@@ -49,15 +49,12 @@ class AnalogClockViewProvider {
     resolveWebviewView(webviewView, _context, _token) {
         webviewView.webview.options = {
             enableScripts: true,
-            // localResourceRoots: [
-            // 	this._extensionUri
-            // ]
         };
         webviewView.webview.html = this._getHtmlForWebview(webviewView.webview);
     }
     _getHtmlForWebview(webview) {
-        // const clockSize = 'small';
-        const clockSize = 'large';
+        const config = vscode.workspace.getConfiguration('analogClock');
+        const clockSize = config.get('size', 'Small');
         return (0, webviewContent_1.generateWebviewHtml)(clockSize);
     }
 }

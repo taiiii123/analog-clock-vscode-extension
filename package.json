@@ -11,6 +11,7 @@
   ],
   "main": "./out/extension.js",
   "l10n": "./l10n",
+  "icon": "",
   "contributes": {
     "views": {
       "explorer": [
@@ -21,11 +22,41 @@
         }
       ]
     },
-    "properties": {
-      "analogClock.enableEmboss": {
-        "type": "boolean",
-        "default": true,
-        "description": "%extension.analogClock.enableEmboss.description%"
+    "configuration": {
+      "title": "Analog Clock Config",
+      "properties": {
+        "analogClock.size": {
+          "type": "string",
+          "default": "Small",
+          "enum": ["Small", "Large"],
+          "enumDescriptions": [
+            "Small clock size (default)",
+            "Large clock size"
+          ],
+          "description": "%extension.analogClock.size.description%"
+        },
+        "analogClock.enableEmboss": {
+          "type": "boolean",
+          "default": true,
+          "description": "%extension.analogClock.enableEmboss.description%"
+        },
+        "analogClock.showDate": {
+          "type": "boolean",
+          "default": true,
+          "description": "%extension.analogClock.showDate.description%"
+        },
+        "analogClock.showTime": {
+          "type": "boolean",
+          "default": true,
+          "description": "%extension.analogClock.showTime.description%"
+        },
+        "analogClock.backgroundColor": {
+          "type": "string",
+          "default": "#3498db",
+          "description": "%extension.analogClock.backgroundColor.description%",
+          "pattern": "^#([A-Fa-f0-9]{1,8})$",
+          "patternErrorMessage": "%extension.analogClock.backgroundColor.errorMessage%"
+        }
       }
     }
   },

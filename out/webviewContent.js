@@ -4,7 +4,7 @@ exports.generateWebviewHtml = generateWebviewHtml;
 const smallClockHtml_1 = require("./smallClockHtml");
 const largeClockHtml_1 = require("./largeClockHtml");
 function generateWebviewHtml(clockSize) {
-    if (clockSize === "small") {
+    if (clockSize === "Small") {
         return (0, smallClockHtml_1.getSmallClockHtml)();
     }
     else {

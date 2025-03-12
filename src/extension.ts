@@ -26,10 +26,6 @@ class AnalogClockViewProvider implements vscode.WebviewViewProvider {
 
 		webviewView.webview.options = {
 			enableScripts: true,
-
-			// localResourceRoots: [
-			// 	this._extensionUri
-			// ]
 		};
 
 		webviewView.webview.html = this._getHtmlForWebview(webviewView.webview);
@@ -37,8 +33,8 @@ class AnalogClockViewProvider implements vscode.WebviewViewProvider {
 	}
 
 	private _getHtmlForWebview(webview: vscode.Webview) {
-		// const clockSize = 'small';
-		const clockSize = 'large';
+		const config = vscode.workspace.getConfiguration('analogClock');
+		const clockSize = config.get('size', 'Small');
 		return generateWebviewHtml(clockSize);
 	}
 }

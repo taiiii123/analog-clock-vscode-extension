@@ -3,7 +3,7 @@ import { getLargeClockHtml } from './largeClockHtml';
 
 
 export function generateWebviewHtml(clockSize: string): string {
-  if (clockSize === "small") {
+  if (clockSize === "Small") {
     return getSmallClockHtml();
   } else {
     return getLargeClockHtml();

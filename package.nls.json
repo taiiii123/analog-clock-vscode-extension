@@ -1,3 +1,8 @@
 {
-    "extension.analogClock.enableEmboss.description": "Enable or disable emboss effect"
+    "extension.analogClock.size.description": "Change the clock size. The default value is `Small`.",
+    "extension.analogClock.enableEmboss.description": "Enable or disable emboss effect",
+    "extension.analogClock.showDate.description": "Enable or disable date display",
+    "extension.analogClock.showTime.description": "Enable or disable time display",
+    "extension.analogClock.backgroundColor.description": "Set the background color in HEX format. The default value is `#3498db`.",
+    "extension.analogClock.backgroundColor.errorMessage": "Invalid format! Please enter a color in HEX format, starting with #, followed by 1 to 8 hexadecimal characters (0-9, A-F). Example: #f, #ff5733, or #ff5733cc."
 }
