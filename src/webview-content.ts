@@ -1,5 +1,5 @@
-import { getSmallClockHtml } from './smallClockHtml';
-import { getLargeClockHtml } from './largeClockHtml';
+import { getSmallClockHtml } from './small-clock-html';
+import { getLargeClockHtml } from './large-clock-html';
 
 
 export function generateWebviewHtml(clockSize: string): string {

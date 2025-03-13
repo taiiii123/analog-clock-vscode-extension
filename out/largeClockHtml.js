@@ -275,7 +275,7 @@ function getLargeClockHtml() {
             }
 
             @media (max-width: 450px) {
-                #hour-numbers, #date-display, #digital-time {
+                #hourNumbers, #dateDisplay, #digitalTime {
                     display: none;
                 }
 
@@ -296,13 +296,13 @@ function getLargeClockHtml() {
         <div class="clock-wrapper">
             <div class="clock">
                 <p class="hidden-text">${vscode_1.l10n.t("📢 The clock is hidden due to the small screen size.")}</p>
-                <div class="hour-marks" id="hour-marks"></div>
-                <div class="hour-numbers" id="hour-numbers"></div>
-                <div id="date-display"></div>
-                <div id="digital-time"></div>
-                <div class="hand hour-hand" id="hour-hand"></div>
-                <div class="hand minute-hand" id="minute-hand"></div>
-                <div class="hand second-hand" id="second-hand"></div>
+                <div class="hour-marks" id="hourMarks"></div>
+                <div class="hour-numbers" id="hourNumbers"></div>
+                <div id="dateDisplay"></div>
+                <div id="digitalTime"></div>
+                <div class="hand hour-hand" id="hourHand"></div>
+                <div class="hand minute-hand" id="minuteHand"></div>
+                <div class="hand second-hand" id="secondHand"></div>
                 <div class="center-point"></div>
             </div>
         </div>
@@ -318,7 +318,7 @@ function getLargeClockHtml() {
             const clockRadius = clock.offsetWidth / 2;
 
             // 時間マーカーを作成
-            const hourMarks = document.getElementById('hour-marks');
+            const hourMarks = document.getElementById('hourMarks');
 
             // 60本のマーカーを追加（秒/分マーカー）
             for (let i = 0; i < 60; i++) {
@@ -363,7 +363,7 @@ function getLargeClockHtml() {
             }
 
             // 数字を配置
-            const hourNumbers = document.getElementById('hour-numbers');
+            const hourNumbers = document.getElementById('hourNumbers');
 
             for (let i = 1; i <= 12; i++) {
                 const angle = (i * 30 - 90) * (Math.PI / 180); // 30度ずつ (360度 ÷ 12)
@@ -391,7 +391,7 @@ function getLargeClockHtml() {
 
                 if (${showDate}) {
                     // 日付表示
-                    const dateDisplay = document.getElementById('date-display');
+                    const dateDisplay = document.getElementById('dateDisplay');
                     dateDisplay.classList.add("date-display");
                     const year = now.getFullYear();
                     const month = (now.getMonth() + 1).toString().padStart(2, '0');
@@ -403,7 +403,7 @@ function getLargeClockHtml() {
 
                 if (${showTime}) {
                     // デジタル時間表示
-                    const digitalTime = document.getElementById('digital-time');
+                    const digitalTime = document.getElementById('digitalTime');
                     digitalTime.classList.add("digital-time");
                     const hoursDisplay = now.getHours().toString().padStart(2, '0');
                     const minutesDisplay = minutes.toString().padStart(2, '0');
@@ -417,9 +417,9 @@ function getLargeClockHtml() {
                 const secondDegrees = (seconds * 6) + (milliseconds * 0.006);
 
                 // 針の回転
-                document.getElementById('hour-hand').style.transform = \`rotate(\${hourDegrees}deg)\`;
-                document.getElementById('minute-hand').style.transform = \`rotate(\${minuteDegrees}deg)\`;
-                document.getElementById('second-hand').style.transform = \`rotate(\${secondDegrees}deg)\`;
+                document.getElementById('hourHand').style.transform = \`rotate(\${hourDegrees}deg)\`;
+                document.getElementById('minuteHand').style.transform = \`rotate(\${minuteDegrees}deg)\`;
+                document.getElementById('secondHand').style.transform = \`rotate(\${secondDegrees}deg)\`;
             }
 
             // 最初に時計を更新

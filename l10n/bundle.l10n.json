@@ -1,4 +1,7 @@
 {
+    "Analog Clock: Settings have been changed. A window reload is required to apply the changes. Do you want to reload now?": "Settings have been changed. A window reload is required to apply the changes. Do you want to reload now?",
+    "Yes": "Yes",
+    "No": "No",
     "📢 The clock is hidden due to the small screen size.": "📢 The clock is hidden due to the small screen size.",
     "['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']": "['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']"
 }

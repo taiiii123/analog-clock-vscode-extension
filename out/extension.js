@@ -34,11 +34,26 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.activate = activate;
-const vscode = __importStar(require("vscode"));
+const vscode_1 = __importStar(require("vscode"));
 const webviewContent_1 = require("./webviewContent"); // 新しいファイルからインポート
 function activate(context) {
     const provider = new AnalogClockViewProvider(context.extensionUri);
-    context.subscriptions.push(vscode.window.registerWebviewViewProvider(AnalogClockViewProvider.viewType, provider));
+    context.subscriptions.push(vscode_1.default.window.registerWebviewViewProvider(AnalogClockViewProvider.viewType, provider));
+    context.subscriptions.push(vscode_1.default.workspace.onDidChangeConfiguration(async (e) => {
+        if (e.affectsConfiguration('analogClock.size')
+            || e.affectsConfiguration('analogClock.enableEmboss')
+            || e.affectsConfiguration('analogClock.showDate')
+            || e.affectsConfiguration('analogClock.showTime')
+            || e.affectsConfiguration('analogClock.backgroundColor')) {
+            const answer = await vscode_1.default.window.showInformationMessage(vscode_1.l10n.t("Analog Clock: Settings have been changed. A window reload is required to apply the changes. Do you want to reload now?"), 
+            // 'Settings have been changed. A window reload is required to apply the changes. Do you want to reload now?',
+            // '設定が変更されました。変更を適用するにはウィンドウを再読み込みする必要があります。今すぐリロードしますか？',
+            vscode_1.l10n.t("Yes"), vscode_1.l10n.t("No"));
+            if (answer === vscode_1.l10n.t("Yes")) {
+                vscode_1.default.commands.executeCommand('workbench.action.reloadWindow');
+            }
+        }
+    }));
 }
 class AnalogClockViewProvider {
     _extensionUri;
@@ -53,7 +68,7 @@ class AnalogClockViewProvider {
         webviewView.webview.html = this._getHtmlForWebview(webviewView.webview);
     }
     _getHtmlForWebview(webview) {
-        const config = vscode.workspace.getConfiguration('analogClock');
+        const config = vscode_1.default.workspace.getConfiguration('analogClock');
         const clockSize = config.get('size', 'Small');
         return (0, webviewContent_1.generateWebviewHtml)(clockSize);
     }

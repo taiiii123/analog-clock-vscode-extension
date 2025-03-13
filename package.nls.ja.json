@@ -1,8 +1,9 @@
 {
-    "extension.analogClock.size.description": "時計のサイズを変更します。デフォルト値は `Small` です。",
+    "extension.analogClock.tab.name": "アナログ時計",
+    "extension.analogClock.size.description": "時計のサイズを変更します。デフォルト値はSmallです。",
     "extension.analogClock.enableEmboss.description": "エンボス効果を有効にするかどうか",
     "extension.analogClock.showDate.description": "日付表示を有効にするかどうか",
     "extension.analogClock.showTime.description": "時刻表示を有効にするかどうか",
-    "extension.analogClock.backgroundColor.description": "背景色を HEX 形式で設定します。デフォルト値は`#3498db`です。",
-    "extension.analogClock.backgroundColor.errorMessage": "無効な形式です！ # で始まり、1桁から8桁の16進数（0-9, A-F）を入力してください。例: #f, #ff5733, または #ff5733cc。"
+    "extension.analogClock.backgroundColor.description": "背景色を HEX 形式で設定します。デフォルト値は#3498dbです。",
+    "extension.analogClock.backgroundColor.errorMessage": "無効な形式です！ # で始まり、1桁から8桁の16進数（0-9, A-F）を入力してください。例: #ff5733cc。"
 }

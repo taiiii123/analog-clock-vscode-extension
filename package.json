@@ -16,14 +16,15 @@
     "views": {
       "explorer": [
         {
+          "icon": "",
           "type": "webview",
           "id": "analogClock.analogClockView",
-          "name": "Analog Clock"
+          "name": "%extension.analogClock.tab.name%"
         }
       ]
     },
     "configuration": {
-      "title": "Analog Clock Config",
+      "title": "Analog Clock",
       "properties": {
         "analogClock.size": {
           "type": "string",

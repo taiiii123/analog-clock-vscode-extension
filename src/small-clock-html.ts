@@ -1,15 +1,13 @@
 import vscode, { l10n } from 'vscode';
 
-/* ---------------------------------- large clock html ------------------------------------------------- */
-
-export function getLargeClockHtml(): string {
+/* ---------------------------------- small clock html ------------------------------------------------- */
+export function getSmallClockHtml(): string {
     const config = vscode.workspace.getConfiguration('analogClock');
     const backgroundColor = config.get('backgroundColor', '#3498db');
     const enableEmboss = config.get('enableEmboss', true);
     const showDate = config.get('showDate', true);
     const showTime = config.get('showTime', true);
 
-    console.log("getLargeClockHtml()");
     return `<!DOCTYPE html>
     <html lang="ja">
     <head>
@@ -32,32 +30,28 @@ export function getLargeClockHtml(): string {
                 font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
             }
 
-            .hidden-text {
-                visibility: hidden;
-            }
-
-            @media (min-width: 451px) {
+            @media (min-width: 301px) {
                 .hidden-text {
                     visibility: hidden;
                 }
 
                 .clock-wrapper {
                     position: relative;
-                    width: 400px;
-                    height: 400px;
+                    width: 250px;
+                    height: 250px;
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    border-radius: 20px;
+                    border-radius: 15px;
                     backdrop-filter: blur(10px);
-                    padding: 30px;
+                    padding: 20px;
                 }
 
                 .embossed {
                     background: rgba(255, 255, 255, 0.05);
                     box-shadow:
-                        0 25px 45px rgba(0, 0, 0, 0.2),
-                        inset 0 0 30px rgba(255, 255, 255, 0.1);
+                        0 15px 30px rgba(0, 0, 0, 0.2),
+                        inset 0 0 20px rgba(255, 255, 255, 0.1);
                 }
 
                 .clock {
@@ -71,8 +65,8 @@ export function getLargeClockHtml(): string {
                     background: rgba(0, 0, 0, 0.03);
                     border: 2px solid rgba(255, 255, 255, 0.1);
                     box-shadow:
-                        inset 0 0 60px rgba(0, 0, 0, 0.1),
-                        0 10px 20px rgba(0, 0, 0, 0.1);
+                        inset 0 0 40px rgba(0, 0, 0, 0.1),
+                        0 6px 12px rgba(0, 0, 0, 0.1);
                 }
 
                 .clock::before {
@@ -81,10 +75,10 @@ export function getLargeClockHtml(): string {
                     width: 94%;
                     height: 94%;
                     border-radius: 50%;
-                    border: 8px solid #2c3e50;
+                    border: 5px solid #2c3e50;
                     box-shadow:
-                        inset 0 0 20px rgba(0, 0, 0, 0.2),
-                        0 0 50px rgba(255, 255, 255, 0.1);
+                        inset 0 0 15px rgba(0, 0, 0, 0.2),
+                        0 0 30px rgba(255, 255, 255, 0.1);
                 }
 
                 .hour-marks {
@@ -97,21 +91,21 @@ export function getLargeClockHtml(): string {
 
                 .hour-mark {
                     position: absolute;
-                    width: 2px;
-                    height: 10px;
+                    width: 1px;
+                    height: 6px;
                     background: rgba(255, 255, 255, 0.5);
                     transform-origin: bottom center;
                 }
 
                 .hour-mark.major {
-                    height: 20px;
-                    width: 4px;
+                    height: 12px;
+                    width: 2px;
                     background: rgba(255, 255, 255, 0.9);
                 }
 
                 .hour-mark.medium {
-                    height: 15px;
-                    width: 3px;
+                    height: 9px;
+                    width: 1.5px;
                     background: rgba(255, 255, 255, 0.7);
                 }
 
@@ -124,33 +118,33 @@ export function getLargeClockHtml(): string {
 
                 .hour-number {
                     position: absolute;
-                    font-size: 18px;
+                    font-size: 14px;
                     color: rgba(255, 255, 255, 0.9);
                     text-align: center;
                     font-weight: 500;
-                    width: 40px;
-                    height: 40px;
-                    line-height: 40px;
+                    width: 25px;
+                    height: 25px;
+                    line-height: 25px;
                     transform: translate(-50%, -50%);
                 }
 
                 .center-point {
                     position: absolute;
-                    width: 20px;
-                    height: 20px;
+                    width: 12px;
+                    height: 12px;
                     border-radius: 50%;
                     background: #e74c3c;
                     z-index: 999;
-                    box-shadow: 0 0 10px rgba(231, 76, 60, 0.8);
+                    box-shadow: 0 0 6px rgba(231, 76, 60, 0.8);
                 }
 
                 .center-point::after {
                     content: '';
                     position: absolute;
-                    width: 10px;
-                    height: 10px;
-                    top: 5px;
-                    left: 5px;
+                    width: 6px;
+                    height: 6px;
+                    top: 3px;
+                    left: 3px;
                     border-radius: 50%;
                     background: rgba(255, 255, 255, 0.8);
                 }
@@ -159,28 +153,28 @@ export function getLargeClockHtml(): string {
                     position: absolute;
                     transform-origin: bottom center;
                     bottom: 50%;
-                    border-radius: 20px;
+                    border-radius: 10px;
                     z-index: 10;
-                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+                    box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
                 }
 
                 .hour-hand {
-                    width: 8px;
-                    height: 80px;
+                    width: 5px;
+                    height: 50px;
                     background: #fff;
                     z-index: 11;
                 }
 
                 .minute-hand {
-                    width: 6px;
-                    height: 140px;
+                    width: 3px;
+                    height: 80px;
                     background: #fff;
                     z-index: 12;
                 }
 
                 .second-hand {
-                    width: 2px;
-                    height: 150px;
+                    width: 1px;
+                    height: 90px;
                     background: #e74c3c;
                     z-index: 13;
                 }
@@ -188,28 +182,28 @@ export function getLargeClockHtml(): string {
                 .second-hand::before {
                     content: '';
                     position: absolute;
-                    bottom: -15px;
-                    left: -4px;
-                    width: 10px;
-                    height: 10px;
+                    bottom: -9px;
+                    left: -3px;
+                    width: 7px;
+                    height: 7px;
                     border-radius: 50%;
                     background: #e74c3c;
                 }
 
                 .date-display {
                     position: absolute;
-                    width: 140px;
-                    height: 30px;
+                    width: 100px;
+                    height: 22px;
                     background: rgba(0, 0, 0, 0.2);
                     backdrop-filter: blur(5px);
-                    border-radius: 5px;
+                    border-radius: 4px;
                     display: flex;
                     justify-content: center;
                     align-items: center;
                     color: white;
-                    font-size: 18px;
-                    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-                    bottom: 200px;
+                    font-size: 13px;
+                    box-shadow: 0 3px 9px rgba(0, 0, 0, 0.2);
+                    bottom: 125px;
                     left: 50%;
                     transform: translateX(-50%);
                     z-index: 1000;
@@ -217,32 +211,32 @@ export function getLargeClockHtml(): string {
 
                 .digital-time {
                     position: absolute;
-                    bottom: 90px;
+                    bottom: 60px;
                     color: white;
-                    font-size: 18px;
+                    font-size: 13px;
                     background: rgba(0, 0, 0, 0.2);
-                    padding: 5px 15px;
-                    border-radius: 20px;
+                    padding: 3px 10px; */
+                    border-radius: 12px;
                     letter-spacing: 1px;
                     backdrop-filter: blur(5px);
-                    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+                    box-shadow: 0 3px 9px rgba(0, 0, 0, 0.2);
                     z-index: 1000;
                     font-weight: bold;
                 }
 
                 .brand {
                     position: absolute;
-                    top: 90px;
+                    top: 60px;
                     color: rgba(255, 255, 255, 0.7);
-                    font-size: 18px;
+                    font-size: 12px;
                     font-weight: 300;
-                    letter-spacing: 3px;
+                    letter-spacing: 2px;
                     text-transform: uppercase;
                 }
             }
 
-            @media (max-width: 450px) {
-                #hour-numbers, #date-display, #digital-time {
+            @media (max-width: 300px) {
+                #hourNumbers, #dateDisplay, #digitalTime {
                     display: none;
                 }
 
@@ -263,13 +257,13 @@ export function getLargeClockHtml(): string {
         <div class="clock-wrapper">
             <div class="clock">
                 <p class="hidden-text">${l10n.t("📢 The clock is hidden due to the small screen size.")}</p>
-                <div class="hour-marks" id="hour-marks"></div>
-                <div class="hour-numbers" id="hour-numbers"></div>
-                <div id="date-display"></div>
-                <div id="digital-time"></div>
-                <div class="hand hour-hand" id="hour-hand"></div>
-                <div class="hand minute-hand" id="minute-hand"></div>
-                <div class="hand second-hand" id="second-hand"></div>
+                <div class="hour-marks" id="hourMarks"></div>
+                <div class="hour-numbers" id="hourNumbers"></div>
+                <div id="dateDisplay"></div>
+                <div id="digitalTime"></div>
+                <div class="hand hour-hand" id="hourHand"></div>
+                <div class="hand minute-hand" id="minuteHand"></div>
+                <div class="hand second-hand" id="secondHand"></div>
                 <div class="center-point"></div>
             </div>
         </div>
@@ -285,7 +279,7 @@ export function getLargeClockHtml(): string {
             const clockRadius = clock.offsetWidth / 2;
 
             // 時間マーカーを作成
-            const hourMarks = document.getElementById('hour-marks');
+            const hourMarks = document.getElementById('hourMarks');
 
             // 60本のマーカーを追加（秒/分マーカー）
             for (let i = 0; i < 60; i++) {
@@ -306,15 +300,15 @@ export function getLargeClockHtml(): string {
                 }
 
                 // マーカーの長さを取得
-                let markLength = 10; // デフォルト
+                let markLength = 6; // デフォルト
                 if (mark.classList.contains('major')) {
-                    markLength = 20;
+                    markLength = 12;
                 } else if (mark.classList.contains('medium')) {
-                    markLength = 15;
+                    markLength = 9;
                 }
 
                 // マーカーの半径方向の位置を設定（時計の縁から少し内側）
-                const markDistance = clockRadius - markLength - 10; // 10はマージン
+                const markDistance = clockRadius - markLength - 6; // 6はマージン
 
                 // マーカーの位置を計算
                 const x = clockRadius + markDistance * Math.cos(radian);
@@ -330,11 +324,11 @@ export function getLargeClockHtml(): string {
             }
 
             // 数字を配置
-            const hourNumbers = document.getElementById('hour-numbers');
+            const hourNumbers = document.getElementById('hourNumbers');
 
             for (let i = 1; i <= 12; i++) {
                 const angle = (i * 30 - 90) * (Math.PI / 180); // 30度ずつ (360度 ÷ 12)
-                const numberDistance = clockRadius - 45; // 数字の半径方向の位置
+                const numberDistance = clockRadius - 30; // 数字の半径方向の位置
 
                 const x = clockRadius + numberDistance * Math.cos(angle);
                 const y = clockRadius + numberDistance * Math.sin(angle);
@@ -358,7 +352,7 @@ export function getLargeClockHtml(): string {
 
                 if (${showDate}) {
                     // 日付表示
-                    const dateDisplay = document.getElementById('date-display');
+                    const dateDisplay = document.getElementById('dateDisplay');
                     dateDisplay.classList.add("date-display");
                     const year = now.getFullYear();
                     const month = (now.getMonth() + 1).toString().padStart(2, '0');
@@ -370,7 +364,7 @@ export function getLargeClockHtml(): string {
 
                 if (${showTime}) {
                     // デジタル時間表示
-                    const digitalTime = document.getElementById('digital-time');
+                    const digitalTime = document.getElementById('digitalTime');
                     digitalTime.classList.add("digital-time");
                     const hoursDisplay = now.getHours().toString().padStart(2, '0');
                     const minutesDisplay = minutes.toString().padStart(2, '0');
@@ -384,9 +378,9 @@ export function getLargeClockHtml(): string {
                 const secondDegrees = (seconds * 6) + (milliseconds * 0.006);
 
                 // 針の回転
-                document.getElementById('hour-hand').style.transform = \`rotate(\${hourDegrees}deg)\`;
-                document.getElementById('minute-hand').style.transform = \`rotate(\${minuteDegrees}deg)\`;
-                document.getElementById('second-hand').style.transform = \`rotate(\${secondDegrees}deg)\`;
+                document.getElementById('hourHand').style.transform = \`rotate(\${hourDegrees}deg)\`;
+                document.getElementById('minuteHand').style.transform = \`rotate(\${minuteDegrees}deg)\`;
+                document.getElementById('secondHand').style.transform = \`rotate(\${secondDegrees}deg)\`;
             }
 
             // 最初に時計を更新
@@ -408,4 +402,4 @@ export function getLargeClockHtml(): string {
         </script>
     </body>
     </html>`;
-}
+};
