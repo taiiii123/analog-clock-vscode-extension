@@ -2,7 +2,7 @@
   "name": "analog-clock",
   "displayName": "Analog Clock",
   "description": "A simple analog clock for the VS Code explorer sidebar.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "icon": "images/AnalogClock.gif",
   "publisher": "Y3191",
   "repository": {
