@@ -1,22 +1,56 @@
 {
   "name": "analog-clock",
   "displayName": "Analog Clock",
-  "description": "",
+  "description": "A simple analog clock for the VS Code explorer sidebar.",
   "version": "0.0.1",
+  "icon": "images/AnalogClock.gif",
+  "publisher": "Y3191",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/taiiii123/analog-clock-vscode-extension.git"
+  },
+  "license": "MIT",
   "engines": {
     "vscode": "^1.97.0"
   },
   "categories": [
     "Other"
   ],
+  "activationEvents": [
+    "onView:analogClock.analogClockView"
+  ],
+  "keywords": [
+    "analog clock",
+    "clock",
+    "analog",
+    "time",
+    "date",
+    "time management",
+    "explorer",
+    "action bar",
+    "time",
+    "timer",
+    "VSCode tools",
+    "developer tools",
+    "clock",
+    "webview",
+    "sidebar",
+    "custom views",
+    "VSCode extension",
+    "アナログ時間",
+    "時間",
+    "時計",
+    "日付",
+    "時間管理",
+    "エクスプローラー",
+    "アクションバー"
+  ],
   "main": "./out/extension.js",
   "l10n": "./l10n",
-  "icon": "",
   "contributes": {
     "views": {
       "explorer": [
         {
-          "icon": "",
           "type": "webview",
           "id": "analogClock.analogClockView",
           "name": "%extension.analogClock.tab.name%"

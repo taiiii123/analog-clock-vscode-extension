@@ -1,71 +1,87 @@
-# analog-clock README
+<div align="right" style="font-size: 20px;">
 
-This is the README for your extension "analog-clock". After writing up a brief description, we recommend including the following sections.
+**English** | [日本語](./README.ja.md)
 
-## Features
+</div>
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+<p align="center"><img src="https://github.com/user-attachments/assets/7c10d957-4d10-42f2-9f6f-c9c6e53bc146" height=120 style="filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.5));"/></p>
+<p align="center"><img src="https://github.com/user-attachments/assets/ee27a83e-643a-4d34-86f3-4edbdf0ca96c" height=120 style="filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.5));"/></p>
 
-For example if there is an image subfolder under your extension project workspace:
+# Analog Clock - VS Code Extension ⌚
 
-\!\[feature X\]\(images/feature-x.png\)
+**Analog Clock** adds a tab with an analog clock to the explorer view, displaying the current time.
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+### Demo
 
-## Requirements
+<p align="center"><img src="https://github.com/user-attachments/assets/e2af6f72-d1a0-4ccf-b08a-30030e22b630" style="filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.5));"/></p>
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+## Installation 💻
 
-## Extension Settings
+1. Open Visual Studio Code.
+2. Press `Ctrl+P` (Windows/Linux) or `Cmd+P` (macOS).
+3. Type `ext install analog-clock`.
+4. Press Enter.
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+## Features ✨
 
-For example:
+A simple and easy-to-use analog clock with the following features:
 
-This extension contributes the following settings:
+- **Size Setting**: Choose between small and large sizes.
+- **Emboss Effect**: Add a 3D effect to the clock.
+- **Date Display**: Toggle the display of the date (year, month, day, and day of the week).
+- **Time Display**: Toggle the display of digital time.
+- **Background Color**: Set your preferred color in HEX format.
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+## Usage 💡
 
-## Known Issues
+1. After installation, click the "Explorer" icon in the VSCode sidebar.
+2. The "Analog Clock" tab will appear at the bottom of the explorer view.
+3. Click the tab to display the analog clock.
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+### Customize Settings
 
-## Release Notes
+You can customize the settings via the following methods or through [settings.json](#settingsjson):
 
-Users appreciate release notes as you update your extension.
+1. Open `File > Preferences > Settings` from the VSCode menu.
+2. Type "Analog Clock" in the search bar.
+3. The following settings will be displayed:
+   - ⚙️ Size: Choose between small or large.
+   - 💫 Emboss Effect: Enable/disable the emboss effect.
+   - 📅 Date Display: Show/hide the date.
+   - 🕒 Time Display: Show/hide the digital time.
+   - 🎨 Background Color: Specify the color in HEX format.
 
-### 1.0.0
+*Note: After changing settings, you need to reload VSCode to apply the changes.*
 
-Initial release of ...
+<img src="https://github.com/user-attachments/assets/8853cb89-7aad-4873-ac41-b9a8da4bd33f" style="filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.5));"/>
 
-### 1.0.1
+## Settings ⚙️
 
-Fixed issue #.
+### settings.json
+You can change the extension [settings](https://code.visualstudio.com/docs/customization/userandworkspace) in the `settings.json` file:
 
-### 1.1.0
+- `analogClock.size`: Change the clock size. Options are `Large` or `Small`.
+- `analogClock.enableEmboss`: Enable or disable the emboss effect.
+- `analogClock.showDate`: Enable or disable the date display.
+- `analogClock.showTime`: Enable or disable the time display.
+- `analogClock.backgroundColor`: Set the background color in HEX format.
 
-Added features X, Y, and Z.
+Example
+```json
+// settings.json
+{
+  "analogClock.backgroundColor": "#ff5733cc",
+  "analogClock.enableEmboss": true,
+  "analogClock.showDate": true,
+  "analogClock.showTime": true,
+  "analogClock.size": "Large"
+}
+```
 
----
+## Changelog 📝
 
-## Following extension guidelines
+All changes can be found in the [CHANGELOG](./CHANGELOG.md).
 
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
+## License ⚖️
 
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+This project is licensed under the [MIT](./LICENSE) License.

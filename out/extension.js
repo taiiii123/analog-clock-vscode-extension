@@ -35,9 +35,9 @@ var __importStar = (this && this.__importStar) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.activate = activate;
 const vscode_1 = __importStar(require("vscode"));
-const webviewContent_1 = require("./webviewContent"); // 新しいファイルからインポート
+const webview_content_1 = require("./webview-content"); // 新しいファイルからインポート
 function activate(context) {
-    const provider = new AnalogClockViewProvider(context.extensionUri);
+    const provider = new AnalogClockViewProvider();
     context.subscriptions.push(vscode_1.default.window.registerWebviewViewProvider(AnalogClockViewProvider.viewType, provider));
     context.subscriptions.push(vscode_1.default.workspace.onDidChangeConfiguration(async (e) => {
         if (e.affectsConfiguration('analogClock.size')
@@ -45,10 +45,7 @@ function activate(context) {
             || e.affectsConfiguration('analogClock.showDate')
             || e.affectsConfiguration('analogClock.showTime')
             || e.affectsConfiguration('analogClock.backgroundColor')) {
-            const answer = await vscode_1.default.window.showInformationMessage(vscode_1.l10n.t("Analog Clock: Settings have been changed. A window reload is required to apply the changes. Do you want to reload now?"), 
-            // 'Settings have been changed. A window reload is required to apply the changes. Do you want to reload now?',
-            // '設定が変更されました。変更を適用するにはウィンドウを再読み込みする必要があります。今すぐリロードしますか？',
-            vscode_1.l10n.t("Yes"), vscode_1.l10n.t("No"));
+            const answer = await vscode_1.default.window.showInformationMessage(vscode_1.l10n.t("Analog Clock: Settings have been changed. A window reload is required to apply the changes. Do you want to reload now?"), vscode_1.l10n.t("Yes"), vscode_1.l10n.t("No"));
             if (answer === vscode_1.l10n.t("Yes")) {
                 vscode_1.default.commands.executeCommand('workbench.action.reloadWindow');
             }
@@ -56,11 +53,7 @@ function activate(context) {
     }));
 }
 class AnalogClockViewProvider {
-    _extensionUri;
     static viewType = 'analogClock.analogClockView';
-    constructor(_extensionUri) {
-        this._extensionUri = _extensionUri;
-    }
     resolveWebviewView(webviewView, _context, _token) {
         webviewView.webview.options = {
             enableScripts: true,
@@ -70,7 +63,7 @@ class AnalogClockViewProvider {
     _getHtmlForWebview(webview) {
         const config = vscode_1.default.workspace.getConfiguration('analogClock');
         const clockSize = config.get('size', 'Small');
-        return (0, webviewContent_1.generateWebviewHtml)(clockSize);
+        return (0, webview_content_1.generateWebviewHtml)(clockSize);
     }
 }
 //# sourceMappingURL=extension.js.map

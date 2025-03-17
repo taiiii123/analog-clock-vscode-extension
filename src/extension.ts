@@ -3,7 +3,7 @@ import { generateWebviewHtml } from './webview-content'; // 新しいファイ�
 
 export function activate(context: vscode.ExtensionContext) {
 
-	const provider = new AnalogClockViewProvider(context.extensionUri);
+	const provider = new AnalogClockViewProvider();
 
 	context.subscriptions.push(
 		vscode.window.registerWebviewViewProvider(AnalogClockViewProvider.viewType, provider));
@@ -20,8 +20,6 @@ export function activate(context: vscode.ExtensionContext) {
 
 				const answer = await vscode.window.showInformationMessage(
 					l10n.t("Analog Clock: Settings have been changed. A window reload is required to apply the changes. Do you want to reload now?"),
-					// 'Settings have been changed. A window reload is required to apply the changes. Do you want to reload now?',
-					// '設定が変更されました。変更を適用するにはウィンドウを再読み込みする必要があります。今すぐリロードしますか？',
 					l10n.t("Yes"),
 					l10n.t("No")
 				);
@@ -37,10 +35,6 @@ export function activate(context: vscode.ExtensionContext) {
 class AnalogClockViewProvider implements vscode.WebviewViewProvider {
 
 	public static readonly viewType = 'analogClock.analogClockView';
-
-	constructor(
-		private readonly _extensionUri: vscode.Uri,
-	) { }
 
 	public resolveWebviewView(
 		webviewView: vscode.WebviewView,
