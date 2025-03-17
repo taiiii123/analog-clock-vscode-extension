@@ -49,11 +49,11 @@ export function getLargeClockHtml(): string {
                     justify-content: center;
                     align-items: center;
                     border-radius: 20px;
-                    backdrop-filter: blur(10px);
                     padding: 30px;
-                }
+                    }
 
                 .embossed {
+                    backdrop-filter: blur(10px);
                     background: rgba(255, 255, 255, 0.05);
                     box-shadow:
                         0 25px 45px rgba(0, 0, 0, 0.2),

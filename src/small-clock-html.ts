@@ -43,11 +43,11 @@ export function getSmallClockHtml(): string {
                     justify-content: center;
                     align-items: center;
                     border-radius: 15px;
-                    backdrop-filter: blur(10px);
                     padding: 20px;
-                }
+                    }
 
                 .embossed {
+                    backdrop-filter: blur(10px);
                     background: rgba(255, 255, 255, 0.05);
                     box-shadow:
                         0 15px 30px rgba(0, 0, 0, 0.2),
